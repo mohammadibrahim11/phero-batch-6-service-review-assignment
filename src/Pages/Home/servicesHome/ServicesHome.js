@@ -1,25 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './ServicesHome.css'
 
-const Service = ({service}) => {
+const ServicesHome = ({service}) => {
     console.log(service);
-    const {name,img,price,description,_id} = service;
-    // const {}
+    const {name,img,price,description} = service;
     return (
-        <div>
-           
-            <div className="card" style={{width: '23rem'}}>
+        <div className=''>
+                      <div className="card " style={{width: '23rem'}}>
   <img src={img}  className="card-img-top p-2 rounded" alt={name}/>
   <div className="card-body text-start">
-    <h5 className="card-title fs-5 text-dark">name:{name}</h5>
+    <h5 className="card-title text-dark">name:{name}</h5>
     <h5 className="card-title text-secondary">price:{price}</h5>
     <p className="card-text text-secondary">{description.slice(0,100)}...</p>
-    <Link to= {`/services/${_id}`}   className="btn btn-primary">view details</Link>
+    <Link to="" className="btn btn-primary">view details</Link>
   </div>
-</div>    
-            
+</div>   
         </div>
     );
 };
 
-export default Service;
+export default ServicesHome;

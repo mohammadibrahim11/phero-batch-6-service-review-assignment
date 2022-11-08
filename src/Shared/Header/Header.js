@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthProvider';
 
 const Header = () => {
+
+ const {user,logOut} = useContext(AuthContext);
+
+ const handleSignOut=()=>{
+  logOut()
+  .then(()=>{})
+  .catch(error => console.error(error));
+ }
+
     return (
 
 <nav class="navbar container navbar-expand-lg bg-white">
@@ -23,11 +33,19 @@ const Header = () => {
         </li>
       </ul>
       <div class="d-flex gap-4">
+
+        {
+          user?.email ?  <div   onClick={handleSignOut} className='btn btn-primary'>log out</div> : <> <Link to='/login'> <button class="btn btn-outline-success" >log in</button></Link>
+
+          <Link to='/signin'> <button class="btn btn-outline-success" >sign in</button></Link>
+          </> 
+        }
        
-        <button class="btn btn-outline-success" >log in</button>
-        <button class="btn btn-outline-success" >register</button>
-      </div>
+    
+
+        
     </div>
+  </div>
   </div>
 </nav>
     );
