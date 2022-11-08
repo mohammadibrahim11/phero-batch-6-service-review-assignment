@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
+// import { useRouteLoaderData } from 'react-router-dom';
 import Service from '../Service/Service';
 import './Services.css'
 
 const Services= () => {
+  // const  {servicesData} = useRouteLoaderData();
+  // console.log(servicesData);
   const [services,setServices]=useState([]);
 
   useEffect( ()=>{
-    fetch('service.json')
+    fetch('http://localhost:5000/services')
     .then(res => res.json())
     .then(data => {
       console.log(data)
@@ -21,7 +24,7 @@ const Services= () => {
          
        <div className='service-card container m-auto mt-5'>
        {
-            services.map((service)=> <Service service={service}></Service>)
+            services.map((service)=> <Service key={service._id} service={service}></Service>)
           }
        </div>
         </div>
