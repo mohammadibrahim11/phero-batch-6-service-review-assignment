@@ -8,7 +8,7 @@ const SignIn = () => {
 
     const [error,setError] = useState();
 
-    const {createUser,signInWithGoogle}= useContext(AuthContext);
+    const {createUser, updateUserProfile, signInWithGoogle}= useContext(AuthContext);
 
     const handleSignIn=event=>{
 
@@ -25,16 +25,28 @@ const SignIn = () => {
     const user = result.user;
     // Navigate('/login')
     console.log(user);
+    handleUserProfile(name,photoURL)
     // form.reset();
  })
  .catch(error => {
     console.error(error)
     setError(error.message)              
 });
-
-
-
 };
+
+const handleUserProfile = (name,photoURL)=>{
+    const profile = {
+        displayName:name,
+        photoURL:photoURL,
+        }
+        updateUserProfile(profile)
+        .then(()=>{
+
+        })
+        .catch((error)=>console.error(error))
+
+
+}
 
 const handleGoogleSignIn=()=>{
     signInWithGoogle()

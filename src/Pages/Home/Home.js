@@ -34,7 +34,7 @@ const Home = () => {
       </div>
 
       <div className="mt-4">
-        <Link to='/services'><button className="btn btn-primary">see all services</button></Link>
+        <Link to='/services' ><button className="btn btn-primary">see all services</button></Link>
       </div>
     </div>
   );

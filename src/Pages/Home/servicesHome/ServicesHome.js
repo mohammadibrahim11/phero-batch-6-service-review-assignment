@@ -4,7 +4,7 @@ import './ServicesHome.css'
 
 const ServicesHome = ({service}) => {
     console.log(service);
-    const {name,img,price,description} = service;
+    const {name,img,price,description,_id} = service;
     return (
         <div className=''>
                       <div className="card " style={{width: '23rem'}}>
@@ -13,7 +13,7 @@ const ServicesHome = ({service}) => {
     <h5 className="card-title text-dark">name:{name}</h5>
     <h5 className="card-title text-secondary">price:{price}</h5>
     <p className="card-text text-secondary">{description.slice(0,100)}...</p>
-    <Link to="" className="btn btn-primary">view details</Link>
+    <Link to={`/services/${_id}`} className="btn btn-primary">view details</Link>
   </div>
 </div>   
         </div>

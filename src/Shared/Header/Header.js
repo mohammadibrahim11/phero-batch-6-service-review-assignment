@@ -34,6 +34,11 @@ const Header = () => {
       </ul>
       <div class="d-flex gap-4">
 
+        <div>
+          {user?.photoURL}
+          {user?.email}
+        </div>
+
         {
           user?.email ?  <div   onClick={handleSignOut} className='btn btn-primary'>log out</div> : <> <Link to='/login'> <button class="btn btn-outline-success" >log in</button></Link>
 

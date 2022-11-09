@@ -8,17 +8,17 @@ const AddReviews = () => {
         const form = event.target;
         const name= form.name.value;
         const photoURL = form.photoURL.value;
-        const review = form.message.value;
+        const text = form.message.value;
         console.log(name,
             photoURL,
-            review);
+            text);
 
 
             const addreview = {
 
                  name,
                 photoURL,
-                review,
+                text,
             }
         
 

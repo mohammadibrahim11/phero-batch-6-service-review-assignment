@@ -1,10 +1,16 @@
-import React, { useContext } from 'react';
-// import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 import useTitle from '../../Hooks/UseTitle';
 
 const LogIn = () => {
+
+    const [error,setError]=useState('');
     const {signIn} = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location =useLocation()
+    const from = location.state?.from?.pathname || '/'
+
     console.log(signIn);
     useTitle('login')
 
@@ -19,11 +25,14 @@ const LogIn = () => {
    signIn(email,password)
    .then(result=>{
       const user = result.user;
-      // Navigate('/login')
       console.log(user);
-      // form.reset();
+      navigate(from, {replace:true});
+      form.reset();
+      setError('');
    })
-   .catch(error => console.error(error));
+   .catch(error => {
+    setError(error.message)
+    console.error(error)});
   
   
   
@@ -36,10 +45,14 @@ const LogIn = () => {
                     <input type="password" name='password' />
 
                 </div>
-
+               <div>
+               {error}
+               </div>
                 <div>
                 <input type="submit" value="log in" />
                 </div>
+
+              
             </form>
         </div>
     );
