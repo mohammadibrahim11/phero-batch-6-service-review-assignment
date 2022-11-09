@@ -23,10 +23,9 @@ const SignIn = () => {
  createUser(email,password)
  .then(result=>{
     const user = result.user;
-    // Navigate('/login')
     console.log(user);
-    handleUserProfile(name,photoURL)
-    // form.reset();
+    form.reset();
+    handleUserProfile(name,photoURL);
  })
  .catch(error => {
     console.error(error)
@@ -37,7 +36,7 @@ const SignIn = () => {
 const handleUserProfile = (name,photoURL)=>{
     const profile = {
         displayName:name,
-        photoURL:photoURL,
+        photoURL:photoURL
         }
         updateUserProfile(profile)
         .then(()=>{
@@ -74,6 +73,10 @@ const handleGoogleSignIn=()=>{
 
                     <input type="password" name='password' placeholder='your password' />
 
+                </div>
+
+                <div>
+                   <span className='text-danger'> {error}</span>
                 </div>
 
                 <div>

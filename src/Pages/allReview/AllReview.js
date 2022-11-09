@@ -1,10 +1,19 @@
-import React from 'react';
+// import React, { useEffect, useState } from 'react';
 import './AllReviews.css'
 
 const AllReview = ({review}) => {
     console.log(review);
 
-    const {_id,name,photoURL,text}=review;
+    const {name,photoURL,text}=review;
+
+    // const [addreview,SetAddReviews]= useState({})
+
+    // useEffect(()=>{
+    //     fetch(`http://localhost:5000/reviews/${service}`)
+    //     .then(res => res.json())
+    //     .then(data => SetAddReviews(data))
+    // },[service])
+   
     return (
         
         <div className='d-flex '>

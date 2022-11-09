@@ -1,10 +1,14 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
+import './Header.css'
 
 const Header = () => {
 
  const {user,logOut} = useContext(AuthContext);
+ console.log(user);
+
+//  const {photoURL}=user;
 
  const handleSignOut=()=>{
   logOut()
@@ -28,6 +32,14 @@ const Header = () => {
         <li class="nav-item">
           <Link class="nav-link" to="/services">Services</Link >
         </li>
+        {
+          user?.email ? <> <li class="nav-item">
+          <Link class="nav-link" to="/addservice">Add service</Link >
+        </li>
+        <li class="nav-item">
+          <Link class="nav-link" to="/myreviews">my reviews</Link >
+        </li> </>  :  ''
+        }
         <li class="nav-item">
           <Link class="nav-link" to="/blog">Blog</Link >
         </li>
@@ -35,8 +47,9 @@ const Header = () => {
       <div class="d-flex gap-4">
 
         <div>
-          {user?.photoURL}
-          {user?.email}
+          <img className='userImg' src={user?.photoURL} alt="" srcset="" />
+        
+          {user?.displayName}
         </div>
 
         {

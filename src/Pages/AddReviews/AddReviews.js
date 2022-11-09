@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../Context/AuthProvider';
+import { useLoaderData } from 'react-router-dom';
 
 
 const AddReviews = () => {
+
+    const {_id, } = useLoaderData();
+    const {user} =useContext(AuthContext);
 
     const handleAddReview =event=>{
         event.preventDefault();
         const form = event.target;
         const name= form.name.value;
+        const email = user?.email || 'unregister'
         const photoURL = form.photoURL.value;
         const text = form.message.value;
         console.log(name,
@@ -19,6 +25,8 @@ const AddReviews = () => {
                  name,
                 photoURL,
                 text,
+               service:_id,
+                email,
             }
         
 
